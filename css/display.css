@@ -1,0 +1,46 @@
+
+[class*="d-none"] {
+  display: none;
+}
+
+[class~="d-flex"] {
+  display: flex;
+}
+
+[class~="row"] {
+  flex-direction: row;
+}
+
+[class~="col"] {
+  flex-direction: column;
+}
+
+[class~="jc-sb"] {
+  justify-content: space-between;
+}
+
+[class~="jc-fe"] {
+  justify-content: flex-end;
+}
+
+[class~="ai-c"] {
+  align-items: center;
+}
+
+[class~="order-0"] {
+  order: 0;
+}
+
+[class~="order-1"] {
+  order: 1;
+}
+
+[class~="order-2"] {
+  order: 2;
+}
+
+@media (min-width: 780px) {
+  [class~="d-flex-md"] {
+    display: flex;
+  }
+}
