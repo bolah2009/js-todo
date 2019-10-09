@@ -58,6 +58,7 @@ const modal = () => {
                             Due Date
                         </label>
                         <input
+                            placeholder="dd/mm/yyy hh:mm"
                             type="datetime-local"
                             class="data"
                             name="dueDate"
@@ -80,7 +81,9 @@ const modal = () => {
                         <label for="todo-project">
                             Project
                         </label>
-                        <input list="project-option" class="data" id="todo-project" name="project" required/>
+                        <input
+                        placeholder="Add to project list"
+                        list="project-option" class="data" id="todo-project" name="project" required/>
                         ${createProjectDatalist()}
                         </div>
                         <div class="input as-c">
