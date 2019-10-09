@@ -1,30 +1,13 @@
-import navBarFragment from './modules/views/mainNavBar';
-import mainSectionFragment from './modules/views/mainView';
+import {
+  toggleNavMenu, toggleProjectMenu, handleDataActions, loadViews,
+} from './modules/handlers/handlers';
 
-const mainContent = document.querySelector('#content');
+const startApp = () => {
+  loadViews('#content');
+  toggleNavMenu('.nav-menu', '.nav-list');
+  toggleProjectMenu('.show-project-nav', '.projects-modal');
 
-mainContent.appendChild(navBarFragment());
-mainContent.appendChild(mainSectionFragment());
-
-
-const toggleNavMenu = (targetClass, toggleClass) => {
-  const targetElement = document.querySelector(targetClass);
-  const toggleElement = document.querySelector(toggleClass);
-  const toggleHideClass = () => toggleElement.classList.toggle('d-none');
-  targetElement.addEventListener('click', toggleHideClass);
-  toggleElement.addEventListener('click', toggleHideClass);
+  document.addEventListener('click', handleDataActions('#content'));
 };
 
-const toggleProjectMenu = (targetClass, toggleClass) => {
-  const targetElement = document.querySelector(targetClass);
-  const toggleElement = document.querySelector(toggleClass);
-  const toggleHideClass = ({ target, currentTarget }) => {
-    if (target !== currentTarget) { return; }
-    toggleElement.classList.toggle('d-none');
-  };
-  targetElement.addEventListener('click', toggleHideClass);
-  toggleElement.addEventListener('click', toggleHideClass);
-};
-
-toggleNavMenu('.nav-menu', '.nav-list');
-toggleProjectMenu('.show-project-nav', '.projects-modal');
+startApp();
