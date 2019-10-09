@@ -72,6 +72,7 @@ const todoListItemFragment = (todo, index) => {
                 </div>
                 <div class="todo-description-card d-none details-${index} jc-sb col">
                 <p class="todo-description grow-1" data-id="${index}">${todo.description}</p>
+                <p class="todo-description">Project: ${todo.project}</p>
                 <p class="todo-description-due-date">Due date and time: ${dueTime}</p>
                 </div>
             </section>`;
