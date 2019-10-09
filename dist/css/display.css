@@ -27,6 +27,26 @@
   align-items: center;
 }
 
+[class~="as-fe"] {
+  align-self: flex-end;
+}
+
+[class~="as-c"] {
+  align-self: center;
+}
+
+[class~="grow-0"] {
+  flex-grow: 0;
+}
+
+[class~="grow-1"] {
+  flex-grow: 1;
+}
+
+[class~="wrap"] {
+  flex-wrap: wrap;
+}
+
 [class~="order-0"] {
   order: 0;
 }
