@@ -1,6 +1,6 @@
 import createFragment from './fragments';
 import todoSectionFragment from './todoSectionView';
-import projectNavBarFragment from './projectsView';
+import { projectNavBarFragment } from './projectsView';
 
 const mainSectionFragment = () => {
   const mainSectionProps = () => {
