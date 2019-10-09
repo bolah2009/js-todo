@@ -169,8 +169,9 @@ section {
 }
 
 .todo-section {
-  margin: auto;
+  margin: 0 auto;
   padding: 8px;
+  width: 100%;
 }
 
 .todo-section-header {
@@ -180,9 +181,8 @@ section {
 .today-date {
   width: fit-content;
   text-align: center;
-  padding: 4px;
-  white-space: nowrap;
-  font-size: 1.6em;
+  padding: 2px;
+  font-size: 1em;
 }
 
 .add-todo,
@@ -218,12 +218,6 @@ section {
   height: 16px;
 }
 
-.button:hover,
-.button:hover .svg-add {
-  background-color: #512da8;
-  color: #fff;
-}
-
 .todo-section-header .show-project-nav {
   font-size: 10px;
   padding: 4px;
@@ -236,7 +230,7 @@ section {
 
 .projects-modal {
   position: fixed;
-  z-index: 1;
+  z-index: 0;
   left: 0;
   top: 0;
   width: 100%;
@@ -307,10 +301,37 @@ ul.project-list {
 }
 
 .todo-header > *,
-.todo-description,
 .todo-due-date,
 .todo-control-panel {
   margin: 4px;
+}
+
+.todo-description-card {
+  margin: 8px;
+  padding: 0;
+}
+
+.todo-description {
+  border: 1px solid transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-description-due-date {
+  text-align: right;
+  font-size: 80%;
+  margin: 8px 0 0 0;
+}
+
+.todo-description:focus {
+  border: 1px solid #000;
+}
+
+.todo-description-card .button {
+  width: 108px;
+  min-width: 108px;
+  height: 32px;
+  margin-left: 8px;
 }
 
 .todo-control-panel [class*="svg-"] {
@@ -319,7 +340,9 @@ ul.project-list {
 }
 
 .todo-control-panel .button,
-.project-list .button {
+.project-list .button,
+.form .button,
+.todo-description-card .button {
   box-shadow:
     0 3px 1px -2px rgba(0, 0, 0, 0.2),
     0 2px 2px 0 rgba(0, 0, 0, 0.14),
@@ -329,6 +352,10 @@ ul.project-list {
   padding: 4px 16px;
   font-size: 0.8em;
   border-radius: 2px;
+}
+
+.todo-control-panel .button {
+  margin: 4px;
 }
 
 .todo-priority {
@@ -346,15 +373,6 @@ ul.project-list {
   stroke: #512da8;
 }
 
-.button:hover path {
-  fill: #fff;
-  stroke: #fff;
-}
-
-.button:hover svg {
-  background: #512da8;
-}
-
 .todo-priority:hover path {
   fill: yellow;
   stroke: yellow;
@@ -366,9 +384,41 @@ ul.project-list {
   transition: opacity 0.3s;
 }
 
+.button:hover path,
+.button.done .svg-complete path {
+  fill: #fff;
+  stroke: #fff;
+  opacity: 1;
+}
+
 .todo-control-panel .button:hover path {
   opacity: 1;
   transition: opacity 0.3s;
+}
+
+.button.done,
+.button.done .svg-complete,
+.button:hover,
+.button:hover svg {
+  background-color: #0a0;
+  color: #fff;
+}
+
+.button.done:hover,
+.button.done:hover .svg-complete {
+  color: #fff;
+  background-color: #eee;
+}
+
+.button.done:hover .svg-complete path {
+  fill: #000;
+  stroke: #000;
+  opacity: 0.5;
+}
+
+[data-action="delete"].button:hover,
+[data-action="delete"].button:hover svg {
+  background-color: #c00;
 }
 
 .todo-priority:hover .svg-rating:nth-of-type(1) path {
@@ -402,9 +452,57 @@ ul.project-list {
   stroke-opacity: 1;
 }
 
+.todo-priority.level-0 [data-action="priority-0"].svg-rating path {
+  fill: rgb(255, 255, 0);
+  stroke: rgb(255, 255, 0);
+}
+
+.todo-priority.level-1 [data-action="priority-0"].svg-rating path,
+.todo-priority.level-1 [data-action="priority-1"].svg-rating path {
+  fill: rgb(255, 255, 0);
+  stroke: rgb(255, 255, 0);
+}
+
+.todo-priority.level-2 [data-action="priority-0"].svg-rating path,
+.todo-priority.level-2 [data-action="priority-1"].svg-rating path,
+.todo-priority.level-2 [data-action="priority-2"].svg-rating path {
+  fill: rgb(255, 255, 0);
+  stroke: rgb(255, 255, 0);
+}
+
+.todo-priority.level-3 [data-action="priority-0"].svg-rating path,
+.todo-priority.level-3 [data-action="priority-1"].svg-rating path,
+.todo-priority.level-3 [data-action="priority-2"].svg-rating path,
+.todo-priority.level-3 [data-action="priority-3"].svg-rating path {
+  fill: rgb(255, 255, 0);
+  stroke: rgb(255, 255, 0);
+}
+
+.todo-priority.level-4 [data-action="priority-0"].svg-rating path,
+.todo-priority.level-4 [data-action="priority-1"].svg-rating path,
+.todo-priority.level-4 [data-action="priority-2"].svg-rating path,
+.todo-priority.level-4 [data-action="priority-3"].svg-rating path,
+.todo-priority.level-4 [data-action="priority-4"].svg-rating path {
+  fill: rgb(255, 255, 0);
+  stroke: rgb(255, 255, 0);
+}
+
 .todo-priority .svg-rating {
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 340px) {
+  .todo-control-panel .button {
+    width: 45%;
+  }
+}
+
+@media (min-width: 480px) {
+  .today-date {
+    white-space: nowrap;
+    font-size: 1.6em;
+  }
 }
 
 @media (min-width: 780px) {
@@ -414,7 +512,7 @@ ul.project-list {
 
   .projects-modal {
     position: sticky;
-    width: 30%;
+    width: 19%;
     height: 100%;
     overflow: auto;
     background: none;
@@ -428,6 +526,10 @@ ul.project-list {
     width: 100%;
     height: 100%;
     min-height: 100vh;
+  }
+
+  .todo-section {
+    width: 79%;
   }
 
   .main-nav {
@@ -451,4 +553,135 @@ ul.project-list {
     width: unset;
     padding: 4px;
   }
+}
+
+/* Modal */
+
+.pop-up {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.pop-up.show {
+  display: flex;
+  padding: 0.8rem;
+  animation: 0.4s ease-in popupshow;
+}
+
+.form {
+  padding: 0.8rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 85);
+  border-radius: 4px;
+  margin: 2% auto;
+  text-align: center;
+  justify-self: center;
+  max-width: max-content;
+  max-height: max-content;
+  position: relative;
+  animation: 0.4s ease-in popupformshow;
+}
+
+.form * {
+  margin-bottom: 8px;
+}
+
+.form .input {
+  width: 100%;
+  margin: 4px;
+}
+
+.form .button {
+  width: 80%;
+  font-size: 1.2em;
+  padding: 8px;
+}
+
+.delete-modal .form-title {
+  font-size: 1em;
+  width: 80%;
+}
+
+.delete-modal .input {
+  width: 80%;
+}
+
+.delete-modal .input .button {
+  width: 108px;
+}
+
+.delete-modal .input [data-name="yes"].button {
+  background: rgb(200, 0, 0);
+  color: #fff;
+}
+
+.form .data {
+  width: 100%;
+  padding: 6px 12px;
+  line-height: 1.5;
+  color: #000;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.form label {
+  visibility: hidden;
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  margin: 0;
+  top: 8px;
+  right: 8px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input:invalid {
+  border-color: #900;
+  background-color: #fdd;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+.error {
+  display: none;
+  width: 100%;
+  padding: 0.3em;
+  padding: 0;
+  text-align: center;
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 4px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.error.active {
+  display: block;
 }
