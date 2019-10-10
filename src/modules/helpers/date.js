@@ -33,6 +33,7 @@ const formatDate = () => {
   const currentMonth = (date) => month[monthIndex(date)];
   const currentDate = (date) => newDate(date).getDate();
   const currentYear = (date) => newDate(date).getFullYear();
+  const isFuture = (date) => newDate(date) > now;
 
   const dayDateMonthYear = (date) => `${dayOfTheWeek(date)}, ${currentDate(date)} ${currentMonth(
     date,
@@ -102,7 +103,9 @@ const formatDate = () => {
     return getDueDate();
   };
 
-  return { toFullDate, toDueDate, toFullDateWithTime };
+  return {
+    toFullDate, toDueDate, toFullDateWithTime, isFuture,
+  };
 };
 
 export default formatDate();
