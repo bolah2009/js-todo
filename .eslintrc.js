@@ -15,5 +15,6 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'arrow-parens': ["error", "as-needed"],
   },
 };

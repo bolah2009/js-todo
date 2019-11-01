@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1c9db032-0afc-4411-8193-f65ab293a77c/deploy-status)](https://app.netlify.com/sites/bolah-js-todo/deploys)
+
 # PROJECT: TODO LIST
 
 This is the fourth project of the Main JavaScript curriculum at [Microverse](https://www.microverse.org/) - @microverseinc
@@ -38,24 +40,24 @@ npm install
 - Run Script (Development mode)
 
 ```bash
-npm run-script dev
+npm run dev
 ```
 
 - Run Script (Production mode)
 
 ```bash
-npm run-script build
+npm run build
 ```
 
 - Start server
 
 ```bash
-npm run-script start
+npm run start
 ```
 
 #### [Assignment link](https://www.theodinproject.com/courses/javascript/lessons/todo-list)
 
-#### [Live link (Coming sooon)]()
+#### [Live link](https://bolah-js-todo.netlify.com/)
 
 ### Screenshots
 

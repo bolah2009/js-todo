@@ -121,7 +121,7 @@ const filterTodo = (list, todo, index) => {
   }
 };
 
-const appendTodoListItem = (list) => {
+const appendTodoListItem = list => {
   const append = (todo, index) => {
     filterTodo(list, todo, index);
   };
