@@ -18,7 +18,7 @@ const db = (model = '', defaultValues = []) => {
     return true;
   };
 
-  const delData = (index) => {
+  const delData = index => {
     if (index >= store.length) {
       return false;
     }

@@ -27,13 +27,13 @@ export const toggleProjectMenu = (targetClass, toggleClass) => {
   toggleElement.addEventListener('click', toggleHideClass);
 };
 
-export const loadViews = (selector) => {
+export const loadViews = selector => {
   const mainContent = getElement(selector);
   mainContent.appendChild(navBarFragment());
   mainContent.appendChild(mainSectionFragment());
 };
 
-const eventHandlers = (rootSelector) => {
+const eventHandlers = rootSelector => {
   const mainContent = getElement(rootSelector);
 
   const toggleModal = (modalClass = '', listClass = '', position) => {
@@ -53,7 +53,7 @@ const eventHandlers = (rootSelector) => {
       return false;
     };
 
-    const addTodoFormDataToStore = (form) => {
+    const addTodoFormDataToStore = form => {
       let isValid = true;
       const formData = document.querySelectorAll(`${form} .data`);
       const formErrorElement = getElement(`${form} .error`);
@@ -111,7 +111,7 @@ const eventHandlers = (rootSelector) => {
     toggleElement.addEventListener('click', closeModalForm);
   };
 
-  const confirmDelete = (index) => {
+  const confirmDelete = index => {
     mainContent.appendChild(modal.createDeleteForm());
     const deleteTodoForm = getElement('.pop-up.delete-modal');
 
@@ -131,7 +131,7 @@ const eventHandlers = (rootSelector) => {
     deleteTodoForm.addEventListener('click', getResponse);
   };
 
-  const toggleTodoComplete = (index) => {
+  const toggleTodoComplete = index => {
     taskModel().toggleIsDone(index);
     refreshTodoList();
   };
@@ -165,7 +165,7 @@ const eventHandlers = (rootSelector) => {
     toggleModal('.pop-up.project-modal', '.projects .project-list');
   };
 
-  const editTodoDetails = (index) => {
+  const editTodoDetails = index => {
     mainContent.appendChild(modal.newTodoForm());
     const oldDetails = taskModel().store[index];
     const todoForm = getElement('.pop-up.todo-modal');
@@ -195,7 +195,7 @@ const eventHandlers = (rootSelector) => {
   };
 };
 
-export const handleDataActions = (rootSelector) => {
+export const handleDataActions = rootSelector => {
   const handlers = eventHandlers(rootSelector);
   const dataActionsListerners = ({ target, target: { dataset: { action = '', id = '' } } }) => {
     if (!action) { return; }
