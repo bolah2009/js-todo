@@ -26,19 +26,17 @@ const formatDate = () => {
     'Saturday',
   ];
 
-  const newDate = (date) => new Date(date);
-  const weekIndex = (date) => newDate(date).getDay();
-  const monthIndex = (date) => newDate(date).getMonth();
-  const dayOfTheWeek = (date) => week[weekIndex(date)];
-  const currentMonth = (date) => month[monthIndex(date)];
-  const currentDate = (date) => newDate(date).getDate();
-  const currentYear = (date) => newDate(date).getFullYear();
-  const isFuture = (date) => newDate(date) > now;
+  const newDate = date => new Date(date);
+  const weekIndex = date => newDate(date).getDay();
+  const monthIndex = date => newDate(date).getMonth();
+  const dayOfTheWeek = date => week[weekIndex(date)];
+  const currentMonth = date => month[monthIndex(date)];
+  const currentDate = date => newDate(date).getDate();
+  const currentYear = date => newDate(date).getFullYear();
+  const isFuture = date => newDate(date) > now;
 
-  const dayDateMonthYear = (date) => `${dayOfTheWeek(date)}, ${currentDate(date)} ${currentMonth(
-    date,
-  )} ${currentYear(date)}`;
-  const dayDateMonth = (date) => `${dayOfTheWeek(date)}, ${currentDate(date)} ${currentMonth(date)}`;
+  const dayDateMonthYear = date => `${dayOfTheWeek(date)}, ${currentDate(date)} ${currentMonth(date)} ${currentYear(date)}`;
+  const dayDateMonth = date => `${dayOfTheWeek(date)}, ${currentDate(date)} ${currentMonth(date)}`;
 
   const toTime = (date = now) => {
     const hour = newDate(date).getHours();
@@ -56,7 +54,7 @@ const formatDate = () => {
   const toFullDate = (date = now) => dayDateMonthYear(date);
   const toFullDateWithTime = (date = now) => `${dayDateMonthYear(date)} - ${toTime(date)}`;
 
-  const toDueDate = (date) => {
+  const toDueDate = date => {
     const yearDiff = newDate(date).getFullYear() - now.getFullYear();
     const monthDiff = newDate(date).getMonth() - now.getMonth();
     const dateDiff = newDate(date).getDate() - now.getDate();
